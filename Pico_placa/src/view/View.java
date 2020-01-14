@@ -5,12 +5,14 @@
  */
 package view;
 import model.Placa;
+import controller.ControllerPlaca;
 /**
  *
  * @author juanc
  */
 public class View extends javax.swing.JFrame {
     Placa placa = new Placa();
+    ControllerPlaca controllerPlaca = new ControllerPlaca();
 
     /**
      * Creates new form View
@@ -121,6 +123,9 @@ public class View extends javax.swing.JFrame {
         placa.setNumberPlaca(jTextField1.getText());
         //String a = placa.getNumberPlaca();
         //System.out.println(a);
+        char lastdigit = controllerPlaca.getLastDigit(jTextField1.getText());
+        //System.out.println("Last digit is: " + lastdigit);
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**

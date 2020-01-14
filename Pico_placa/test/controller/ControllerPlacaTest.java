@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author juanc
  */
-public class ControllerTest {
+public class ControllerPlacaTest {
     
-    public ControllerTest() {
+    public ControllerPlacaTest() {
     }
     
     @BeforeClass
@@ -44,10 +44,14 @@ public class ControllerTest {
     public void testGetLastDigit() {
         System.out.println("getLastDigit");
         String placa = "123458";
+        ControllerPlaca instance = new ControllerPlaca();
         char expResult = '8';
-        char result = ControllerPlaca.getLastDigit(placa);
+        char result = instance.getLastDigit(placa);
         assertEquals(expResult, result);
+       
         
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
     }
     
 }
