@@ -10,13 +10,49 @@ package controller;
  * @author juanc
  */
 public class ControllerFecha {
+        
     
-    public int dayofweek(int day, int month, int year){
+    public int dayOfWeek(int day, int month, int year){
         int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
         year -= (month < 3) ? 1 : 0;
-        
-        return (year + year/4 - year/100 + year/400 + t[month-1] + day) % 7;
+        int dayNumber = (year + year/4 - year/100 + year/400 + t[month-1] + day) % 7;
+        return dayNumber;
     }
     
+    public int []StringToInt(String date){
+        String[] parts = date.split("/");
+        String day = parts[0];
+        String month = parts[1];
+        String year = parts[2];
+        int dateint[] = {Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year)};
+        
+        return dateint;
+    }
+    
+    public String theDayIs(int dayNumber){
+        String dayName;
+        switch(dayNumber){
+                case 1:
+                    dayName = "Moonday";
+                    break;
+                case 2:
+                    dayName = "Tuesday";
+                    break;
+                case 3:
+                    dayName = "Wednesday";
+                    break;
+                case 4:
+                    dayName = "Thursday";
+                    break;
+                case 5:
+                    dayName = "Friday";
+                    break;
+                default:
+                    dayName = "Weekend";
+                
+        }
+        
+        return dayName;
+    }
     
 }

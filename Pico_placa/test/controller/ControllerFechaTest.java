@@ -38,7 +38,7 @@ public class ControllerFechaTest {
     }
 
     /**
-     * Test of dayofweek method, of class ControllerFecha.
+     * Test of dayOfWeek method, of class ControllerFecha.
      */
     @Test
     public void testDayofweek() {
@@ -48,8 +48,48 @@ public class ControllerFechaTest {
         int year = 2015;
         ControllerFecha instance = new ControllerFecha();
         int expResult = 3;
-        int result = instance.dayofweek(day, month, year);
+        int result = instance.dayOfWeek(day, month, year);
         assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of dayOfWeek method, of class ControllerFecha.
+     */
+    
+
+    /**
+     * Test of theDayIs method, of class ControllerFecha.
+     */
+    @Test
+    public void testTheDayIs() {
+        System.out.println("theDayIs");
+        int dayNumber = 5;
+        ControllerFecha instance = new ControllerFecha();
+        String expResult = "Friday";
+        String result = instance.theDayIs(dayNumber);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of dayOfWeek method, of class ControllerFecha.
+     */
+   
+
+    /**
+     * Test of StringToInt method, of class ControllerFecha.
+     */
+    @Test
+    public void testStringToInt() {
+        System.out.println("StringToInt");
+        String date = "05/06/2012";
+        ControllerFecha instance = new ControllerFecha();
+        int[] expResult = {5, 6, 2012};
+        int[] result = instance.StringToInt(date);
+        assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
