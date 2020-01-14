@@ -5,7 +5,7 @@
  */
 package controller;
 import model.Placa;
-import java.util.Calendar;
+
 /**
  *
  * @author juanc
@@ -15,18 +15,13 @@ import java.util.Calendar;
 public class ControllerPlaca {
     Placa placa = new Placa();
     
-    Calendar now = Calendar.getInstance();
-    String[] strDays = new String[] { "Sunday", "Monday", "Tuesday","Wednesday", "Thusday", "Friday", "Saturday" };
-    //System.out.println("Current day is : " strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);
-    
-    
-    static char getLastDigit(String placa) {
+    public char getLastDigit(String placa) {
         char lastDigit = placa.charAt(placa.length()-1);
-        System.out.println(lastDigit);
+        //System.out.println(lastDigit);
         return lastDigit;
   }
     
-    
+    //VALIDAR CHAPA 
     
     
 }
