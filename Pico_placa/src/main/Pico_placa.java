@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package main;
-
+import model.Placa;
+import view.View;
 /**
  *
  * @author juanc
@@ -16,6 +17,12 @@ public class Pico_placa {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        /*String a = "ppp444";
+        Placa placa = new Placa(a);
+        String x = placa.getNumberPlaca();
+        System.out.println(x);*/
+        new View().setVisible(true);
+        
     }
     
 }
