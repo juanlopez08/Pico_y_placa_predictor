@@ -8,7 +8,6 @@ package controller;
 import java.awt.Color;
 import javax.swing.JTextField;
 
-
 /**
  *
  * @author juanc
@@ -27,26 +26,19 @@ public class ControllerValidations {
         return flag;
     }
 
-    public String validatePicoPlaca(char lastDigit, int day) {
-        String negative = "You can NOT drive from 7:00 a.m. \nto 9:30 a.m. or from 4:00 p.m. to 7:30 p.m.";
-        String positive = "You can drive.";
-        String message = "";
+    public int validatePicoPlaca(char lastDigit, int day) {
+        int flag = 0;
         int lastDigitInt = Character.getNumericValue(lastDigit);
-           
-        if ((lastDigitInt == 0 || lastDigitInt == 1) && day == 1 ) {
-            message = negative;
-        }else if ((lastDigitInt == 2 || lastDigitInt == 3) && day == 2){
-            message = negative;
-        }else if ((lastDigitInt == 4 || lastDigitInt == 5) && day == 3){
-            message = negative;
-        } else if ((lastDigitInt == 6 || lastDigitInt == 7) && (day == 4)) {
-            message = negative;
-        } else if ((lastDigitInt == 8 || lastDigitInt == 9) && (day == 5)) {
-            message = negative;
-        } else {
-            message = positive;
+        int pairDays[] = {0, 2, 4, 6, 8};
+        int nonPairDays[] = {1, 3, 5, 7, 9};
+
+        for (int i = 0; i < 5; i++) {
+            if ((lastDigitInt == pairDays[i] || lastDigitInt == nonPairDays[i]) && (day == i + 1)) {
+                flag = 1;
+            }
         }
-        return message;
+        return flag;
     }
 
 }
+
