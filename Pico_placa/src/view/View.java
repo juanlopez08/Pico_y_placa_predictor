@@ -4,20 +4,23 @@
  * and open the template in the editor.
  */
 package view;
+
 import model.Placa;
 import controller.ControllerPlaca;
 import controller.ControllerFecha;
 import controller.ControllerValidations;
+
 /**
  *
  * @author juanc
  */
 public class View extends javax.swing.JFrame {
+
     Placa placa = new Placa();
     ControllerPlaca controllerPlaca = new ControllerPlaca();
     ControllerFecha controllerFecha = new ControllerFecha();
     ControllerValidations controllerValidations = new ControllerValidations();
-    
+
     /**
      * Creates new form View
      */
@@ -44,14 +47,16 @@ public class View extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(778, 135));
+        setMinimumSize(new java.awt.Dimension(550, 135));
 
-        jPanel1.setLayout(new java.awt.GridLayout(4, 1));
+        jPanel1.setLayout(new java.awt.GridLayout(5, 1));
 
         jPanel3.setLayout(new java.awt.BorderLayout());
 
@@ -62,7 +67,7 @@ public class View extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel1.setText("Placa:");
+        jLabel1.setText("Placa (3 Letters and 4 numbers):");
         jPanel2.add(jLabel1);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,10 +87,15 @@ public class View extends javax.swing.JFrame {
 
         jPanel1.add(jPanel6);
 
-        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel5.setLayout(new java.awt.GridLayout(1, 2));
 
         jLabel4.setText("Result");
-        jPanel4.add(jLabel4);
+        jPanel5.add(jLabel4);
+
+        jPanel1.add(jPanel5);
+
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel4.add(jPanel7);
 
         jButton1.setText("Check");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,20 +126,38 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        if((controllerValidations.validateEmptyFields(jTextField1)==false) && (controllerValidations.validateEmptyFields(jTextField2)==false) ){
-            placa.setNumberPlaca(jTextField1.getText());
-            char lastdigit = controllerPlaca.getLastDigit(jTextField1.getText());
-            int date[] = controllerFecha.StringToInt(jTextField2.getText());
-            int dayNumber = controllerFecha.dayOfWeek(date[0], date[1], date[2]);
-            String dayName = controllerFecha.theDayIs(dayNumber);
-            System.out.println("last digit " + lastdigit);
-            System.out.println("day number " + dayNumber);
-            String message = controllerValidations.validatePicoPlaca(lastdigit, dayNumber);
-            jLabel4.setText(message + "\nIt is " + dayName);
-        }else{
+        String negative = "You can NOT drive from 7:00 a.m. \nto 9:30 a.m. or from 4:00 p.m. to 7:30 p.m.";
+        String positive = "You can drive.";
+        String message = "";
+
+        if ((controllerValidations.validateEmptyFields(jTextField1) == false) && (controllerValidations.validateEmptyFields(jTextField2) == false)) {
+            if (controllerPlaca.validateChapa(jTextField1.getText()) == 1) {
+                if (controllerFecha.validateFecha(jTextField2.getText()) == 1) {
+                    placa.setNumberPlaca(jTextField1.getText());
+                    char lastdigit = controllerPlaca.getLastDigit(jTextField1.getText());
+                    int date[] = controllerFecha.StringToInt(jTextField2.getText());
+                    int dayNumber = controllerFecha.dayOfWeek(date[0], date[1], date[2]);
+                    String dayName = controllerFecha.theDayIs(dayNumber);
+
+                    if (controllerValidations.validatePicoPlaca(lastdigit, dayNumber) == 1) {
+                        message = negative;
+                    } else {
+                        message = positive;
+                    }
+                    //String message = controllerValidations.validatePicoPlaca(lastdigit, dayNumber);
+
+                    jLabel4.setText(message + "\nIt is " + dayName);
+                } else {
+                    jLabel4.setText("Wrong Date.");
+                }
+            } else {
+                jLabel4.setText("Wrong Placa.");
+            }
+        } else {
             jLabel4.setText("There are empty fields");
         }
-        
+
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
@@ -177,7 +205,9 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

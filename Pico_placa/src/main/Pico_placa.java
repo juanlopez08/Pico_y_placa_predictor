@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package main;
+
 import model.Placa;
 import view.View;
+
 /**
  *
  * @author juanc
@@ -18,7 +20,6 @@ public class Pico_placa {
     public static void main(String[] args) {
         
         new View().setVisible(true);
-        
-    }
     
+    }
 }

@@ -53,5 +53,20 @@ public class ControllerPlacaTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of validateChapa method, of class ControllerPlaca.
+     */
+    @Test
+    public void testValidateChapa() {
+        System.out.println("validateChapa");
+        String chapa = "HJH6569";
+        ControllerPlaca instance = new ControllerPlaca();
+        int expResult = 1;
+        int result = instance.validateChapa(chapa);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
     
 }
