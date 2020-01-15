@@ -27,20 +27,20 @@ public class ControllerValidations {
     }
 
     public String validatePicoPlaca(char lastDigit, int day) {
-        String message = "";
-        String negative = "You can NOT drive from 7:00 a.m. to 9:30 a.m. or from 4:00 p.m. to 7:30 p.m.";
+        String negative = "You can NOT drive from 7:00 a.m. \nto 9:30 a.m. or from 4:00 p.m. to 7:30 p.m.";
         String positive = "You can drive.";
+        String message = "";
         int lastDigitInt = Character.getNumericValue(lastDigit);
-
-        if (lastDigitInt == 0 || lastDigitInt == 1 && day == 1) {
+           
+        if ((lastDigitInt == 0 || lastDigitInt == 1) && day == 1 ) {
             message = negative;
-        } else if ((lastDigit == 2 || lastDigit == 3) && (day == 2)) {
+        }else if ((lastDigitInt == 2 || lastDigitInt == 3) && day == 2){
             message = negative;
-        } else if ((lastDigit == 4 || lastDigit == 5) && (day == 3)) {
+        }else if ((lastDigitInt == 4 || lastDigitInt == 5) && day == 3){
             message = negative;
-        } else if ((lastDigit == 6 || lastDigit == 7) && (day == 4)) {
+        } else if ((lastDigitInt == 6 || lastDigitInt == 7) && (day == 4)) {
             message = negative;
-        } else if ((lastDigit == 8 || lastDigit == 9) && (day == 5)) {
+        } else if ((lastDigitInt == 8 || lastDigitInt == 9) && (day == 5)) {
             message = negative;
         } else {
             message = positive;

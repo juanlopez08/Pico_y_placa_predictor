@@ -23,6 +23,7 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -48,6 +49,7 @@ public class View extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(778, 135));
 
         jPanel1.setLayout(new java.awt.GridLayout(4, 1));
 
@@ -123,7 +125,7 @@ public class View extends javax.swing.JFrame {
             System.out.println("last digit " + lastdigit);
             System.out.println("day number " + dayNumber);
             String message = controllerValidations.validatePicoPlaca(lastdigit, dayNumber);
-            jLabel4.setText(message + "It is " + dayName);
+            jLabel4.setText(message + "\nIt is " + dayName);
         }else{
             jLabel4.setText("There are empty fields");
         }

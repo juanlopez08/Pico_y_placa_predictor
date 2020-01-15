@@ -16,11 +16,7 @@ public class Pico_placa {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        /*String a = "ppp444";
-        Placa placa = new Placa(a);
-        String x = placa.getNumberPlaca();
-        System.out.println(x);*/
+        
         new View().setVisible(true);
         
     }
