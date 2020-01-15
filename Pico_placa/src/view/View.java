@@ -6,6 +6,8 @@
 package view;
 import model.Placa;
 import controller.ControllerPlaca;
+import controller.ControllerFecha;
+import controller.ControllerValidations;
 /**
  *
  * @author juanc
@@ -13,7 +15,9 @@ import controller.ControllerPlaca;
 public class View extends javax.swing.JFrame {
     Placa placa = new Placa();
     ControllerPlaca controllerPlaca = new ControllerPlaca();
-
+    ControllerFecha controllerFecha = new ControllerFecha();
+    ControllerValidations controllerValidations = new ControllerValidations();
+    
     /**
      * Creates new form View
      */
@@ -40,7 +44,7 @@ public class View extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,7 +53,7 @@ public class View extends javax.swing.JFrame {
 
         jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setText("Pico and placa (PREDICTOR)");
+        jLabel3.setText("Pico y placa (PREDICTOR)");
         jPanel3.add(jLabel3, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel3);
@@ -78,20 +82,10 @@ public class View extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 133, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 48, Short.MAX_VALUE)
-        );
+        jLabel4.setText("Result");
+        jPanel4.add(jLabel4);
 
-        jPanel4.add(jPanel5);
-
-        jButton1.setText("jButton1");
+        jButton1.setText("Check");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -120,11 +114,19 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        placa.setNumberPlaca(jTextField1.getText());
-        //String a = placa.getNumberPlaca();
-        //System.out.println(a);
-        char lastdigit = controllerPlaca.getLastDigit(jTextField1.getText());
-        //System.out.println("Last digit is: " + lastdigit);
+        if((controllerValidations.validateEmptyFields(jTextField1)==false) && (controllerValidations.validateEmptyFields(jTextField2)==false) ){
+            placa.setNumberPlaca(jTextField1.getText());
+            char lastdigit = controllerPlaca.getLastDigit(jTextField1.getText());
+            int date[] = controllerFecha.StringToInt(jTextField2.getText());
+            int dayNumber = controllerFecha.dayOfWeek(date[0], date[1], date[2]);
+            String dayName = controllerFecha.theDayIs(dayNumber);
+            System.out.println("last digit " + lastdigit);
+            System.out.println("day number " + dayNumber);
+            String message = controllerValidations.validatePicoPlaca(lastdigit, dayNumber);
+            jLabel4.setText(message + "It is " + dayName);
+        }else{
+            jLabel4.setText("There are empty fields");
+        }
         
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -168,11 +170,11 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
