@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author juanc
  */
 public class ControllerPlacaTest {
-    
+
     public ControllerPlacaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -48,8 +48,7 @@ public class ControllerPlacaTest {
         char expResult = '8';
         char result = instance.getLastDigit(placa);
         assertEquals(expResult, result);
-       
-        
+
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -68,5 +67,5 @@ public class ControllerPlacaTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-    
+
 }

@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author juanc
  */
 public class ControllerFechaTest {
-    
+
     public ControllerFechaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -57,8 +57,6 @@ public class ControllerFechaTest {
     /**
      * Test of dayOfWeek method, of class ControllerFecha.
      */
-    
-
     /**
      * Test of theDayIs method, of class ControllerFecha.
      */
@@ -77,8 +75,6 @@ public class ControllerFechaTest {
     /**
      * Test of dayOfWeek method, of class ControllerFecha.
      */
-   
-
     /**
      * Test of StringToInt method, of class ControllerFecha.
      */
@@ -93,5 +89,37 @@ public class ControllerFechaTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-    
+
+    /**
+     * Test of dayOfWeek method, of class ControllerFecha.
+     */
+    @Test
+    public void testDayOfWeek() {
+        System.out.println("dayOfWeek");
+        int day = 14;
+        int month = 01;
+        int year = 2020;
+        ControllerFecha instance = new ControllerFecha();
+        int expResult = 2;
+        int result = instance.dayOfWeek(day, month, year);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of validateFecha method, of class ControllerFecha.
+     */
+    @Test
+    public void testValidateFecha() {
+        System.out.println("validateFecha");
+        String fecha = "14/09/2019";
+        ControllerFecha instance = new ControllerFecha();
+        int expResult = 1;
+        int result = instance.validateFecha(fecha);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
 }

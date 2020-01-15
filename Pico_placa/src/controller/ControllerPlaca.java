@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
  *
  * @author juanc
  */
-
 public class ControllerPlaca {
 
     Placa placa = new Placa();
