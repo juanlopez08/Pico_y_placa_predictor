@@ -8,6 +8,7 @@ package controller;
 import java.awt.Color;
 import javax.swing.JTextField;
 
+
 /**
  *
  * @author juanc

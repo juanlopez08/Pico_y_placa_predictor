@@ -4,20 +4,23 @@
  * and open the template in the editor.
  */
 package view;
+
 import model.Placa;
 import controller.ControllerPlaca;
 import controller.ControllerFecha;
 import controller.ControllerValidations;
+
 /**
  *
  * @author juanc
  */
 public class View extends javax.swing.JFrame {
+
     Placa placa = new Placa();
     ControllerPlaca controllerPlaca = new ControllerPlaca();
     ControllerFecha controllerFecha = new ControllerFecha();
     ControllerValidations controllerValidations = new ControllerValidations();
-    
+
     /**
      * Creates new form View
      */
@@ -62,7 +65,7 @@ public class View extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel1.setText("Placa:");
+        jLabel1.setText("Placa (3 Letters and 4 numbers):");
         jPanel2.add(jLabel1);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -116,20 +119,29 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        if((controllerValidations.validateEmptyFields(jTextField1)==false) && (controllerValidations.validateEmptyFields(jTextField2)==false) ){
-            placa.setNumberPlaca(jTextField1.getText());
-            char lastdigit = controllerPlaca.getLastDigit(jTextField1.getText());
-            int date[] = controllerFecha.StringToInt(jTextField2.getText());
-            int dayNumber = controllerFecha.dayOfWeek(date[0], date[1], date[2]);
-            String dayName = controllerFecha.theDayIs(dayNumber);
-            System.out.println("last digit " + lastdigit);
-            System.out.println("day number " + dayNumber);
-            String message = controllerValidations.validatePicoPlaca(lastdigit, dayNumber);
-            jLabel4.setText(message + "\nIt is " + dayName);
-        }else{
+        if ((controllerValidations.validateEmptyFields(jTextField1) == false) && (controllerValidations.validateEmptyFields(jTextField2) == false)) {
+            if (controllerPlaca.validateChapa(jTextField1.getText()) == 1) {
+                if (controllerFecha.validateFecha(jTextField2.getText()) == 1) {
+                    placa.setNumberPlaca(jTextField1.getText());
+                    char lastdigit = controllerPlaca.getLastDigit(jTextField1.getText());
+                    int date[] = controllerFecha.StringToInt(jTextField2.getText());
+                    int dayNumber = controllerFecha.dayOfWeek(date[0], date[1], date[2]);
+                    String dayName = controllerFecha.theDayIs(dayNumber);
+                    System.out.println("last digit " + lastdigit);
+                    System.out.println("day number " + dayNumber);
+                    String message = controllerValidations.validatePicoPlaca(lastdigit, dayNumber);
+                    jLabel4.setText(message + "\nIt is " + dayName);
+                } else {
+                    jLabel4.setText("Wrong Date.");
+                }
+            } else {
+                jLabel4.setText("Wrong Placa.");
+            }
+        } else {
             jLabel4.setText("There are empty fields");
         }
         
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**

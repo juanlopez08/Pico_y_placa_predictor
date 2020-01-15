@@ -5,7 +5,8 @@
  */
 package controller;
 import model.Placa;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  *
  * @author juanc
@@ -21,7 +22,13 @@ public class ControllerPlaca {
         return lastDigit;
   }
     
-    //VALIDAR CHAPA 
-    
-    
+    public int validateChapa(String chapa){
+        Pattern pattern = Pattern.compile("^[A-z]{3}[0-9]{4}$");
+        Matcher matcher = pattern.matcher(chapa);
+        if(matcher.find() == true){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

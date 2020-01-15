@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package controller;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -53,6 +55,17 @@ public class ControllerFecha {
         }
         
         return dayName;
+    }
+    
+    
+        public int validateFecha(String fecha){
+        Pattern pattern = Pattern.compile("^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})");
+        Matcher matcher = pattern.matcher(fecha);
+        if(matcher.find() == true){
+            return 1;
+        } else {
+            return 0;
+        }
     }
     
 }
