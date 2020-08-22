@@ -19,7 +19,7 @@ public class Pico_placa {
      */
     public static void main(String[] args) {
 
-     
+        new View().setVisible(true);
 
     }
 }
